@@ -2,7 +2,7 @@
     "name": "final-project",
     "version": "1.0.0",
     "description": "**Fill out later!",
-    "main": "myJS.js",
+    "main": "LandingPage.js",
     "scripts": {
         "start": "nodemon server.js"
     },

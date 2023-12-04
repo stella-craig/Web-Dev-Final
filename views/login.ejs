@@ -85,11 +85,9 @@
         </div>
   </div>
 
-<div id="message" style="position:absolute;top:0%;height:100%;left:0%;width:100%;background:rgba(0,0,0,.7);z-index:100;">
-<div id="messagebox" style="position:absolute;top:40%;height:20%;width:40%;left:30%;text-align:center;font-size:300%;z-index:101">
-Account Created
-</div>
-</div>
+<div style="position:absolute;top:40%;height:20%;width:40%;left:30%;text-align:center;">
+  </div>
+
 
 </div>
 <script>
@@ -97,35 +95,14 @@ Account Created
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get('state');
   
-
-
-  function showmessage(ele){
-    document.getElementById("messagebox").innerHTML = ele;
-    document.getElementById("message").style.visibility = "visible";
-    document.getElementById("message").style.opacity = 1;
-    document.getElementById("message").style.transition = "all 1s ease";
-    setTimeout(function(){
-      document.getElementById("message").style.opacity = 0;
-
-    },100)
-    setTimeout(function(){
-      document.getElementById("message").style.visibility = "hidden";
-    })
-    
-  }
-
-
-
   if(myParam==1){
-
-    showmessage("Account Created");
-
+    alert("Account Created")
   }
   if(myParam==0){
-    showmessage("Register Failed");
+    alert("Account Failed")
   }
   if(myParam==2){
-    showmessage("Invalid Credentials");
+    alert("Account Does Not Exist")
   }
 </script>
 </body>

@@ -56,7 +56,7 @@ app.use(methodOverride("_method"))
 
 users = [];
 
-app.get('/', checkAuthentication, (req, res) => res.render('index.ejs', {name: req.user.name}))
+app.get('/', (req, res) => res.render('index.ejs', {name: req.user.name}))
 app.get("/login", (req, res) => res.render("login.ejs"))
 app.post("/login", checkNotAuthentication, passport.authenticate('local', {
 

@@ -16,4 +16,4 @@ npm install nodemon
 ```
 
 # How to run
-Launch the node app by running ```node server.js``` in your terminal. It will then run locally on your machine at port 3000.
+Launch the node app by running ```node server.js``` in your terminal while navigated to the root directory of this project. It will then run locally on your machine at port 3000.

@@ -85,24 +85,47 @@
         </div>
   </div>
 
-<div style="position:absolute;top:40%;height:20%;width:40%;left:30%;text-align:center;">
-  </div>
-
-
-</div>
-<script>
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const myParam = urlParams.get('state');
   
-  if(myParam==1){
-    alert("Account Created")
-  }
-  if(myParam==0){
-    alert("Account Failed")
-  }
-  if(myParam==2){
-    alert("Account Does Not Exist")
-  }
-</script>
+  <div id="message" style="position:absolute;top:0%;left:0%;height:100%;width:100%;background:rgba(0,0,0,.7)">
+    <div id="messagebox" style="position:absolute;top:40%;height:20%;width:40%;left:30%;text-align:center;">
+    
+    ACCOUNT CREATED
+    
+    </div>
+    </div>
+    
+
+    <script>
+    
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get('state');
+      document.getElementById("message").style.visibility = "hidden";
+    
+      function showmessage(ele){
+        document.getElementById("messagebox").innerHTML = ele;
+        document.getElementById("message").style.opacity = 1;
+        document.getElementById("message").style.visibility = "visible";
+        setTimeout(function(){
+          document.getElementById("message").style.transition = "all 1s ease";
+          document.getElementById("message").style.opacity = 0;
+        },100)
+        setTimeout(function(){
+          document.getElementById("message").style.transition = "all 0s ease";
+          document.getElementById("message").style.visibility = "hidden";
+        },1000)
+    
+    
+      }
+    
+      
+      if(myParam==1){
+        showmessage("Account Created")
+      }
+      if(myParam==0){
+        showmessage("Account Failed")
+      }
+      if(myParam==2){
+        showmessage("Account Does Not Exist")
+      }
+    </script>
 </body>

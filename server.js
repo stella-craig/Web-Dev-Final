@@ -58,7 +58,7 @@ users = [];
 
 app.get('/', (req, res) => res.render('index.ejs', {name: req.user.name}))
 app.get("/login", (req, res) => res.render("login.ejs"))
-app.post("/login", checkNotAuthentication, passport.authenticate('local', {
+app.post("/login", passport.authenticate('local', {
 
     successRedirect: "/shop",
     failureRedirect: "/login?state=2",

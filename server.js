@@ -1,7 +1,18 @@
 const express = require('express')
 const app = express()
-const path = require("path");
+const mongoose = require('mongoose')
 const port = 3000
+const url = 'mongodb+srv://SCraig:Password1@jibs-cluster.c84yhzu.mongodb.net/?retryWrites=true&w=majority'
+
+async function myConnect(){
+    try{
+        await mongoose.connect(url)
+        console.log("connected to MongoDB jibs-cluster")
+    }catch{
+        console.error(error)
+    }
+}
+
 
 app.use(express.static('public'))
 //app.use('/CSS', express.static(__dirname + '/public/CSS'))

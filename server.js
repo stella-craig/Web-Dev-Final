@@ -68,7 +68,17 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride("_method"))
 
-users = [];
+users = [
+    // Test account.
+    // Email: test@jibs.com
+    // Password: 123
+    {
+        id: '1701986192577',
+        name: undefined,
+        email: 'test@jibs.com',
+        password: '$2b$08$3yeRUsjymue.07cPUOXvxu9j/kcxM74GnBH.YQ7PYxO6Ps12a3g5.'
+    }
+];
 
 app.get('/', (req, res) => res.render('index.ejs', {name: req.user.name}))
 app.get("/login", (req, res) => res.render("login.ejs"))
@@ -138,8 +148,6 @@ console.log(users)
 
 })
 
-
-//
 
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`)

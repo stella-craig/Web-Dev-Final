@@ -14,6 +14,9 @@ async function myConnect(){
 }
 
 
+
+
+
 app.use(express.static('public'))
 //app.use('/CSS', express.static(__dirname + '/public/CSS'))
 app.use('/media', express.static(__dirname + '/public/media'))

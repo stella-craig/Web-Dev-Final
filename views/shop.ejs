@@ -4,11 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="media/logo.png" type="image/icon type">
-    <title>shop with JIBS!!</title>
+    <title>Shop with JIBS!!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function getItemQuantity(itemName) {
+        fetch(`/get-item-quantity?itemName=${encodeURIComponent(itemName)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Display the quantity on the page
+                // For example, update the text of an element with id 'quantity-[itemName]'
+                document.getElementById(`quantity-${itemName}`).innerText = data.quantity;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>    
   </head>
+
 <body>
   <!-- Nav Bar -->
     <nav style="background-color:#372160"class="navbar fixed-top navbar-dark">
@@ -34,7 +47,9 @@
           <img src="/media/1050lol.PNG" class="card-img-top" alt="...">
           <div class="card-body">
             <h3 class="card-title"><i>I Survived CS-1050</i> shirt</h3>
-            <p>For those of us who survived the horrors...</p>
+            <p style="font-weight: bold;">Price: </p>
+            <p style="font-weight: bold;">Available: </p>
+            <p>For those of us who have survived the horrors.</p>
             <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
           </div>
         </div>
@@ -48,6 +63,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Drywall Installer Shirt 1 -->
         <div class="card col " style="min-width: 350px">
             <img src="/media/Drywall Jesus Shirt.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -56,6 +73,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Drywall Installer Shirt 2 -->
         <div class="card col " style="min-width: 350px">
             <img src="/media/Drywall Voice Shirt.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -64,6 +83,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Drywall Installer Shirt 3 -->
         <div class="card col " style="min-width: 350px">
             <img src="/media/Eat Drywall Shirt.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -72,6 +93,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Drywall Installer Shirt 4 -->
         <div class="card col " style="min-width: 350px">
             <img src="/media/End Shirt.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -80,6 +103,8 @@
               <button style="background-color:#B7A0E0" class="btn btn-primary" disabled>out of stock :(</button>
             </div>
         </div>
+
+        <!-- Drywall Installer Shirt 5 -->
         <div class="card col " style="min-width: 350px">
             <img src="/media/I Eat Drywall Shirt.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -88,6 +113,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- JimR's Cat -->
         <div class="card col " style="min-width: 350px">
             <img src="/media/Jimrs Cat.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -96,6 +123,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Peanut M&M Shirt -->
         <div class="card col " style="min-width: 350px">
             <img src="/media/M&M Shirt.png" class="card-img-top" alt="...">
             <div class="card-body">
@@ -104,6 +133,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Portal to Hell -->
         <div class="card col " style="min-width: 350px; ">
             <img src="/media/Portal To Hell.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -112,6 +143,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Scott -->
         <div class="card col " style="min-width: 350px; ">
             <img src="/media/Scott.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -125,6 +158,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- A spirit with unfinished business. It is your duty to help them. -->
         <div class="card col " style="min-width: 350px; ">
             <img src="/media/Sorry I'm Late Shirt.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -133,6 +168,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Spare Kidney -->
         <div class="card col " style="min-width: 350px; ">
             <img src="/media/Spare Kidney.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -141,6 +178,8 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
+        <!-- Eyeballs -->
         <div class="card col " style="min-width: 350px; ">
             <img src="/media/the eyes of my enemies.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -149,7 +188,13 @@
               <a href="#" style="background-color:#6f42c1" class="btn btn-primary">Add to Cart</a>
             </div>
         </div>
+
     </div>
+
+
+
+
+
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Stella Craig, Julian ???, Braeden Songer, Vivi Purvis</p>

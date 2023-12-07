@@ -97,6 +97,10 @@ createPassport(
 app.post("/", (req,res)=>{
     res.redirect("/")
 })
+
+app.get("/cart", (req, res) => res.render("cart.ejs"))
+
+
 app.get("/register", (req, res) => res.render("register.ejs"))
 app.post("/register", async (req, res) => {
     try {

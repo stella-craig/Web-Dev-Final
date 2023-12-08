@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>
@@ -26,53 +27,56 @@
   </div>
     </div>
 <div id="containerthing" style="text-align:center;align-content:center;position:absolute;left:30%;width:40%;height:40%;top:20%;overflow-y:scroll;overflow-x:hidden;">
-
-
     
         
 </div>
-
-
 <div style="font-size:200%;position:absolute;top:60%;left:0%;width:100%;height:10%;">
-
 ____________________________________________________<br>
-TOTAL: <span id="finalprice"></span>
+TOTAL: <span id="finalprice"></span><br><br>
+
+<form action="/cart" method="POST">
+
+  <label style="visibility:hidden;" for="credits">Email: </label>
+  <input name="credits" id="credits" type="text" class="form-control" style="visibility:hidden;">
+
+<br>
+<!--TEMPORARY: for now the login button will always let you access the shop. fix this when we have a login system in the backend-->
+<button type="submit" style="background-color:#6f42c1" class="btn btn-primary" style="position:absolute;top:80%;z-index:10000;">BUY</button>
+</form>
 </div>
+
+
+
+
+
+
+
+
+
+  <script>
+
+
+  </script>
 </body>
-
-
 <script>
-
-
 var prevcart = localStorage.getItem("cart");
 var cart = prevcart.split(",");
 var price = 60;
-
 for(i=0;i<cart.length;i++){
     //insert function to determine price
     if(cart[i]!=undefined && cart[i] != 0){
     document.getElementById("containerthing").innerHTML = document.getElementById("containerthing").innerHTML + '<div style="border:solid;border-color: rgba(255,255,255,.4); text-align:center;align-content:center;padding:10px;margin:10px;border-radius:10px;"><span class="price" style="font-size:100%;">' + price + '</span><br><span class="title" style="font-size:200%;">' + cart[i] + '</span><br><button style="margin:10px;background:rgba(0,0,0,0);border: none;border-bottom: solid; " onclick="removeitem(this)">Remove</button></div>'
     }
 }
-
-
 function removeitem(ele){
     cart.splice(cart.indexOf(ele.parentElement.querySelector(".title").innerHTML),1);
     localStorage.setItem("cart", cart);
     location.reload();
 }
-
-
 var totalprice = 0;
-
 for(i=0;i<document.getElementsByClassName("price").length;i++){
-
     totalprice = totalprice + parseInt(document.getElementsByClassName("price")[i].innerHTML);
 }
-
 document.getElementById("finalprice").innerHTML = totalprice;
-
-
-
-
+document.getElementById("credits").value = totalprice;
 </script>

@@ -1,21 +1,46 @@
 const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
 const port = 3000
+const User = require('./mongo.js'); //Imports the User stuff
+const mongoose = require('mongoose')
+mongoose.set('strictQuery', false); // gets rid of annoying warning
+
 const url = 'mongodb+srv://SCraig:Password1@jibs-cluster.c84yhzu.mongodb.net/?retryWrites=true&w=majority'
 
-async function myConnect(){
+/*Idek 
+const asyncHandler = require('express-async-handler')
+const registerUser = asyncHandler(async(req, res) =>{
+    const {email, password} = req.body
+    console.log(req.body)
+    const user = User.create({
+        email,
+        password
+    })
+
+    if(user){
+        res.status(201).json({
+            _id: user._id,
+            email:user.name,
+        })
+    }
+    res.send('Register User')
+})
+*/
+
+//Code for connecting to Databse
+async function dbConnect(){
     try{
         await mongoose.connect(url)
         console.log("connected to MongoDB jibs-cluster")
-    }catch{
-        console.error(error)
+    }catch(error){
+        console.error('Failed to connect to MongoDB:', error)
     }
 }
 
+app.use(express.json());
+//app.use(express.urlencoded({extend:true}));
 
-
-
+dbConnect(); //Connects to the db
 
 app.use(express.static('public'))
 //app.use('/CSS', express.static(__dirname + '/public/CSS'))
@@ -112,28 +137,56 @@ app.post("/", (req,res)=>{
     res.redirect("/")
 })
 app.get("/register", (req, res) => res.render("register.ejs"))
+//This is supposed to save the user register, and send it to the DB. It makes the user, it does not send it anywhere
+//Comment this out and un-comment the stuff below to restore basic functionality
 app.post("/register", async (req, res) => {
     try {
         console.log(req.body)
-    const hashedPassword = await bcrypt.hash(req.body.password, 8)
-    users.push({
-        id: Date.now().toString(),
-        name: req.body.name,
-        email: req.body.email,
-        password: hashedPassword
-    })
-    console.log(users)
-    
-    res.redirect("/login?state=1")
+        const hashedPassword = await bcrypt.hash(req.body.password, 8);
 
-} catch(error) {
-    res.redirect("/login?state=0")
-    console.log(error)
-}
-console.log(users)
+        //Creates the new user
+        const user = new User({
+            email: req.body.email,
+            password: hashedPassword,
+            credits: 100
+        });
+
+        user.save((err) => {
+            if(err) return handleError(err);
+        });
+        console.log('User Created:', user);
+
+        res.redirect("/login?state=1")
+
+    } catch(error) {
+        res.redirect("/login?state=0")
+        console.log(error)
+    }
+
+});
+/*Old code
+app.post("/register", async (req, res) => {
+    try {
+        console.log(req.body)
+        const hashedPassword = await bcrypt.hash(req.body.password, 8)
+        users.push({
+            id: Date.now().toString(),
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword
+        })
+        console.log(users)
+        
+        res.redirect("/login?state=1")
+
+    } catch(error) {
+        res.redirect("/login?state=0")
+        console.log(error)
+    }
+    console.log(users)
 
 })
-
+*/
 
 //
 

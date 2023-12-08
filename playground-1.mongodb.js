@@ -10,6 +10,7 @@
 // https://www.mongodb.com/docs/mongodb-vscode/playgrounds/
 
 // Select the database to use.
+/*
 use('mongodbVSCodePlaygroundDB');
 
 
@@ -33,6 +34,10 @@ db.getCollection('inventory').insertMany([
   { 'item': 'Spare Kidney',                         'price': 9999,  'quantity': 5,  'tag': 'misc' },
   { 'item': 'Eyeballs',                             'price': 25,    'quantity': 5,  'tag': 'misc' },
 ]);
+
+console.log(db.inventory.find())
+*/
+
 
 // // Run a find command to view items sold on April 4th, 2014.
 // const salesOnApril4th = db.getCollection('sales').find({
